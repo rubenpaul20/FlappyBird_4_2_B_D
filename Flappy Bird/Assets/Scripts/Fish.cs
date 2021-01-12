@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fish : MonoBehaviour
 {
@@ -35,6 +36,13 @@ public class Fish : MonoBehaviour
             //add force to our fish to make it jump
             //Vector3(0,1,0) * force(1000)
             rigidbody.AddForce(Vector3.up * force);
+        }
+        //if the fish's y position os smaller than -6f restart level.
+        //if the fish's y position is greater than 6f restart level.
+        //if transform is smaller than -6f OR transform is greater than 6
+        if(transform.position.y < -6f || transform.position.y > 6f)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
